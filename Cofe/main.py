@@ -1,14 +1,14 @@
 import sys
 import sqlite3
-from PyQt5 import uic  # Импортируем uic
-from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QApplication, \
-    QComboBox
+from Cofe.release.dist.addEditCoffeeForm import *
+from Cofe.release.dist.main1 import *
+from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QApplication
 
 
-class addEditCoffee(QMainWindow):
+class addEditCoffee(QMainWindow, Ui_FormAdd):
     def __init__(self, parent, con, edit=False, options=()):
         super().__init__()
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
         self.parent = parent
         self.con = con
         self.edit_coffee = edit
@@ -48,12 +48,12 @@ d, corns, about, price, size)
         self.parent.printTable()
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_Form):
     def __init__(self):
         super().__init__()
         self.TITLE = ['ID', 'Название', 'Степень обжарки', 'В зернах',
                       'Описание вкуса', 'Цена', 'Объем упаковки']
-        uic.loadUi('main.ui', self)  # Загружаем дизайн
+        self.setupUi(self)
         self.con = sqlite3.connect('coffee.db')
         self.cur = self.con.cursor()
         self.printTable()
