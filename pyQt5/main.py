@@ -33,9 +33,8 @@ class MyWidget(QMainWindow):
         self.qp.setBrush(QColor("#FFFF00"))
         s = (self.size // 2)
         x, y = (200, 300)
-        self.qp.drawPolygon(
-            QPolygonF([QPointF(x, y - s), QPointF(x - s, y + s),
-                       QPointF(x + s, y + s)]))
+        self.qp.drawEllipse(int(x - s), int(y - s),
+                            int(self.size), int(self.size))
 
 
 def except_hook(cls, exception, traceback):
